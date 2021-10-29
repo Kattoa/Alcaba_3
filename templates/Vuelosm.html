@@ -6,9 +6,9 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>UsuariosAdministrador</title>
+    <title>Vuelosm</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nicepage.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/UsuariosAdministrador.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Vuelosm.css') }}" media="screen">
     <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/nicepage.js') }}" defer=""></script>
     <meta name="generator" content="Nicepage 3.27.0, nicepage.com">
@@ -23,7 +23,7 @@
 		"sameAs": []
 }</script>
     <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="UsuariosAdministrador">
+    <meta property="og:title" content="Vuelosm">
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
   </head>
@@ -70,33 +70,48 @@
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-7a65">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-default u-text-1">Usuarios Registrados</h1>
+        <h1 class="u-text u-text-default u-text-1">Vuelos&nbsp;</h1>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
           <table class="u-table-entity">
             <colgroup>
-              <col width="34.9%">
-              <col width="37.1%">
-              <col width="28%">
+              <col width="12.6%">
+              <col width="11.1%">
+              <col width="12.4%">
+              <col width="14.1%">
+              <col width="17.1%">
+              <col width="8.8%">
+              <col width="9.8%">
+              <col width="14.2%">
             </colgroup>
             <thead class="u-palette-1-base u-table-header u-table-header-1">
-              <tr style="height: 27px;">
-                <th class="u-border-1 u-border-black u-table-cell"> Nombre</th>
-                <th class="u-border-1 u-border-black u-table-cell">Edad</th>
-                <th class="u-border-1 u-border-black u-table-cell">Sexo</th>
+              <tr style="height: 94px;">
+                <th class="u-border-1 u-border-black u-table-cell"> Código vuelo&nbsp;</th>
+                <th class="u-border-1 u-border-black u-table-cell"> Origen</th>
+                <th class="u-border-1 u-border-black u-table-cell"> Destino&nbsp;&nbsp;</th>
+                <th class="u-border-1 u-border-black u-table-cell"> Fecha de salida</th>
+                <th class="u-border-1 u-border-black u-table-cell"> Fecha de llegada&nbsp;</th>
+                <th class="u-border-1 u-border-black u-table-cell"> Avión&nbsp;</th>
+                <th class="u-border-1 u-border-black u-table-cell">Capacidad</th>
+                <th class="u-border-1 u-border-black u-table-cell">Estado del vuelo</th>
               </tr>
             </thead>
             <tbody class="u-table-body">
-              {% for com in usuarios %}
-              <tr style="height: 76px;">
-                <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[0]) %}</td>
+              {% for com in vuelos %}
+              <tr style="height: 60px;">
                 <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[1]) %}</td>
                 <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[2]) %}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[3]) %}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[4]) %}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[5]) %}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[6]) %}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[7]) %}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell">{% print(com[8]) %}</td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
         </div>
-        <a href="UsuariosAdministrador" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1"> Actualizar</a>
+        <a href="https://nicepage.com/html5-template" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1"> Actualizar</a>
       </div>
     </section>
     

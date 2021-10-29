@@ -98,26 +98,76 @@ def Inicio_Administrativo():
     return render_template("Inicio-Administrativo.html")
 
 @app.route('/Crear_piloto', methods=['GET', 'POST'])
+@login_required
 def Crear_piloto():
     try:
         if request.method == 'POST':  
             db = get_db()     
-            nombre = request.form['ciudad_origen']
-            apellidos=request.form['ciudad_origen']
-            cedula = request.form['ciudad_destino']
-            correo=request.form['hora_salida']
-            codigopiloto=request.form['hora_llegada']
-            avion=request.form['avion']
-            capacidad=request.form['capacidad']
-            estado_vuelo=request.form['estado_vuelo']
-            db.execute('INSERT INTO vuelos (codigoVuelo, origen, destino, horaSalida,horaLlegada,avion,capacidad,FKestadoVuelo) VALUES (?,?,?,?,?,?,?,?)',(cod_vuelo, ciu_origen, ciu_destino, hora_salida,hora_llegada,avion,capacidad,estado_vuelo))
+            nombre = request.form['nombre']
+            apellidos=request.form['apellidos']
+            cedula = request.form['cedula']
+            correo=request.form['correo']
+            codigopiloto=request.form['codpiloto']
+            db.execute('INSERT INTO pilotos (nombre,apellido,cedula,correo,codigopiloto) VALUES (?,?,?,?,?)',(nombre,apellidos,cedula,correo,codigopiloto))
             db.commit()   
-            flash('Vuelo creado con éxito')
-            return redirect(url_for("Crear_Vuelo"))                
+            flash('Piloto creado con éxito')
+            return redirect(url_for("Crear_piloto"))                
         else:
-            return render_template("Crear_Vuelo.html")
+            return render_template("Crear_piloto.html")
     except:
-        return render_template("Crear_Vuelo.html")
+        return render_template("Crear_piloto.html")
+
+@app.route('/Editar', methods=['GET', 'POST'])
+@login_required
+def Editar():
+    try:
+        if request.method == 'POST':  
+            db = get_db()     
+            nombre = request.form['nombre']
+            apellidos=request.form['apellidos']
+            cedula = request.form['cedula']
+            correo=request.form['correo']
+            codigopiloto=request.form['codpiloto']
+            db.execute('UPDATE pilotos SET nombre = ?,apellido = ?,cedula = ?,correo = ?,codigopiloto = ? WHERE  codigopiloto = ?',(nombre,apellidos,cedula,correo,codigopiloto,codigopiloto))
+            db.commit()   
+            flash('Piloto Editado con éxito')
+            return redirect(url_for("Editar"))                
+        else:
+            return render_template("Editar.html")
+    except:
+        return render_template("Editar.html")
+
+@app.route('/Eliminar', methods=['GET', 'POST'])
+@login_required
+def Eliminar():
+    try:
+        if request.method == 'POST':  
+            db = get_db()     
+            codigopiloto=request.form['codpiloto']
+            print(codigopiloto)
+            db.execute('DELETE FROM pilotos WHERE codigopiloto = ?',(codigopiloto,))
+            db.commit()   
+            print('DELETE FROM pilotos WHERE codigopiloto = ?',(codigopiloto))
+            flash('Piloto Eliminado con éxito')
+            return redirect(url_for("Eliminar"))                
+        else:
+            return render_template("Eliminar.html")
+    except:
+        return render_template("Eliminar.html")
+
+@app.route('/UsuariosAdministrador', methods=['GET', 'POST'])
+@login_required
+def UsuariosAdministrador():
+        sql="SELECT  nombre,edad,sexo FROM usuarios"
+        usuarios=sql_select_productos(sql)
+        return render_template("UsuariosAdministrador.html",usuarios=usuarios)
+
+@app.route('/Vuelosm', methods=['GET', 'POST'])
+@login_required
+def Vuelosm():
+        sql="SELECT *FROM vuelos"
+        vuelos=sql_select_productos(sql)
+        return render_template("Vuelosm.html",vuelos=vuelos)
 
 @app.route('/Administrativo',methods=['GET', 'POST'])
 def Administrativo():
@@ -252,6 +302,3 @@ def cargar_usuario_registrado():
 def logout():
     session.clear()    
     return redirect( url_for('Administrativo')  )
-
-if __name__ == '__main__':
-    app.run( host='127.0.0.1', port =443, ssl_context=('micertificado.pem', 'llaveprivada.pem') )

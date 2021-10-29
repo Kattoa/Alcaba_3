@@ -8,7 +8,7 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Editar</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nicepage.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/Editar_piloto.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Editar.css') }}" media="screen">
     <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/nicepage.js') }}" defer=""></script>
     <meta name="generator" content="Nicepage 3.27.0, nicepage.com">
@@ -29,7 +29,7 @@
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-palette-5-light-2 u-sticky u-sticky-9cc8 u-header" id="sec-1d8e"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1">
-          <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
+          <img src="{{ url_for('static', filename='images/default-logo.png') }}" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-align-left u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -92,25 +92,24 @@
                       <div class="u-form u-login-control u-form-1">
                         <form action="#" method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-30 u-form-vertical u-inner-form" source="custom" name="form-3" style="padding: 10px;">
                           <div class="u-form-group u-form-name">
-                            <label for="username-5b0a" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Nombre " id="username-5b0a" name="username" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="">
+                            <label for="nombre" class="u-form-control-hidden u-label"></label>
+                            <input type="text" placeholder="Nombre " id="nombre" name="nombre" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="">
                           </div>
                           <div class="u-form-group u-form-password">
-                            <label for="password-5b0a" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Apellidos" id="password-5b0a" name="password" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="">
+                            <label for="apellidos" class="u-form-control-hidden u-label"></label>
+                            <input type="text" placeholder="Apellidos" id="apellidos" name="apellidos" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="">
                           </div>
                           <div class="u-form-group u-form-group-3">
-                            <label for="text-116a" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Cedula" id="text-116a" name="text" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
+                            <label for="cedula" class="u-form-control-hidden u-label"></label>
+                            <input type="text" placeholder="Cedula" id="cedula" name="cedula" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
                           </div>
                           <div class="u-form-group u-form-group-4">
-                            <label for="text-18e0" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Correo" id="text-18e0" name="text-1" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
+                            <label for="correo" class="u-form-control-hidden u-label"></label>
+                            <input type="text" placeholder="Correo" id="correo" name="correo" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
                           </div>
                           <div class="u-form-group u-form-group-5">
-                            <label for="text-fd8e" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Código piloto" id="text-fd8e" name="text-2" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
-                          </div>
+                            <label for="codpiloto" class="u-form-control-hidden u-label"></label>
+                            <input type="text" placeholder="Código piloto" id="codpiloto" name="codpiloto" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required"></div>
                           <div class="u-form-checkbox u-form-group">
                             <input type="checkbox" id="checkbox-5b0a" name="remember" value="On">
                             <label for="checkbox-5b0a" class="u-label"> Términos y condiciones&nbsp;&nbsp;</label>
@@ -122,6 +121,17 @@
                           <input type="hidden" value="" name="recaptchaResponse">
                         </form>
                       </div>
+                    </div>
+                    <div>
+                      {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                          <ul class="flashes">
+                              {% for message in messages %}
+                                  <li>{{ message }}</li>
+                              {% endfor %}
+                          </ul>
+                      {% endif %}
+                  {% endwith %}
                     </div>
                   </div>
                 </div>

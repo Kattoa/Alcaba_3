@@ -7,10 +7,10 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Eliminar</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="Eliminar.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nicepage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Eliminar.css') }}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='js/nicepage.js') }}" defer=""></script>
     <meta name="generator" content="Nicepage 3.27.0, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
@@ -70,9 +70,7 @@
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-093c">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-default u-text-1">
-          <span style="font-weight: 700;"></span>
-          <span style="font-weight: 700;">Eliminar</span>&nbsp;<span style="font-weight: 700;">Piloto</span>
+        <h1 class="u-text u-text-default u-text-1"><b>Eliminar</b>&nbsp;<span style="font-weight: 700;">Piloto</span>
         </h1>
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
@@ -107,8 +105,8 @@
                             <input type="text" placeholder="Correo" id="text-18e0" name="text-1" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
                           </div>
                           <div class="u-form-group u-form-group-5">
-                            <label for="text-fd8e" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Código piloto" id="text-fd8e" name="text-2" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
+                            <label for="codpiloto" class="u-form-control-hidden u-label"></label>
+                            <input type="text" placeholder="Código piloto" id="codpiloto" name="codpiloto" class="u-border-2 u-border-white u-input u-input-rectangle u-radius-43 u-white" required="required">
                           </div>
                           <div class="u-form-checkbox u-form-group">
                             <input type="checkbox" id="checkbox-5b0a" name="remember" value="On">
@@ -120,6 +118,17 @@
                           </div>
                           <input type="hidden" value="" name="recaptchaResponse">
                         </form>
+                      </div>
+                      <div>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class="flashes">
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
                       </div>
                     </div>
                   </div>
